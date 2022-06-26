@@ -1,16 +1,25 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# GatsbyJS Crash Course
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+## Documentation
+Documentation for this code base can be found <a href="https://www.youtube.com/watch?v=6YhqQ2ZW1sc">here</a>
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+## Explanation
+This crash course covers basic use cases and example
+
+## Get started
+To start a new project you need to download the Gatsby CLI:
+
+```
+sudo npm i --location=global gatsby-cli
+```
+
+Then in the terminal type the command:
+
+```
+gatsby new <project name>
+```
+
+Navigate to the folder and open your code editor.
 
 ## 🚀 Quick start
 

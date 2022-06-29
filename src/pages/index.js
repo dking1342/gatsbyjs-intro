@@ -13,6 +13,7 @@ const Home = () => {
           <p>UX designer & web developer based in London</p>
           <Link className={styles.btn} to="/projects">My Portfolio Projects</Link>
         </div>
+        <img src="./gatsby-icon.png" alt="site banner" style={{maxWidth:'100%'}} />
       </section>
     </Layout>
   )

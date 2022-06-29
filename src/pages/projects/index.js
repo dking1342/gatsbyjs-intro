@@ -3,22 +3,40 @@ import React from "react"
 import Layout from "../../components/Layout"
 import * as styles from "../../styles/projects.module.css"
 
+// export const query = graphql`
+//   query AllMarkdownRemark {
+//     allMarkdownRemark {
+//       edges {
+//         node {
+//           frontmatter {
+//             slug
+//             stack
+//             title
+//           }
+//           id
+//         }
+//       }
+//     }
+//   }
+// `
+
 export const query = graphql`
-  query AllMarkdownRemark {
-    allMarkdownRemark {
-      edges {
-        node {
-          frontmatter {
-            slug
-            stack
-            title
-          }
-          id
+  query AllSortedMarkdownRemark {
+    allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
+    edges {
+      node {
+        frontmatter {
+          slug
+          stack
+          title
         }
+        id
       }
     }
   }
+  }
 `
+
 
 const Projects = ({ data }) => {
   const projects = data.allMarkdownRemark.edges

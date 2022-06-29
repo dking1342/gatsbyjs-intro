@@ -3,6 +3,7 @@ module.exports = {
     title: `Web Warrior`,
     description: `Web Dev Portfolio`,
     copyright: `This website is copyright 2022 Web Warrior`,
+    contact:`me@thewebwarrior.com`
     // author: `@gatsbyjs`,
     // siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },

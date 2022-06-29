@@ -3,43 +3,33 @@ import React from "react"
 import Layout from "../../components/Layout"
 import * as styles from "../../styles/projects.module.css"
 
-// export const query = graphql`
-//   query AllMarkdownRemark {
-//     allMarkdownRemark {
-//       edges {
-//         node {
-//           frontmatter {
-//             slug
-//             stack
-//             title
-//           }
-//           id
-//         }
-//       }
-//     }
-//   }
-// `
 
 export const query = graphql`
   query AllSortedMarkdownRemark {
     allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
-    edges {
-      node {
-        frontmatter {
-          slug
-          stack
-          title
+      edges {
+        node {
+          frontmatter {
+            slug
+            stack
+            title
+          }
+          id
         }
-        id
       }
     }
-  }
+    site{
+      siteMetadata {
+        contact
+      }
+    }
   }
 `
 
 
 const Projects = ({ data }) => {
   const projects = data.allMarkdownRemark.edges
+  const { contact } = data.site.siteMetadata;
 
   return (
     <Layout>
@@ -59,6 +49,7 @@ const Projects = ({ data }) => {
             </Link>
           ))}
         </div>
+        <p>Like what you see? Email me at { contact } for a quote</p>
       </section>
     </Layout>
   )

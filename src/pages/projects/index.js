@@ -3,22 +3,28 @@ import React from "react"
 import Layout from "../../components/Layout"
 import * as styles from "../../styles/projects.module.css"
 
-
 export const query = graphql`
   query AllSortedMarkdownRemark {
-    allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
+    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
       edges {
         node {
           frontmatter {
             slug
             stack
             title
+            thumb {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
+            }
           }
           id
         }
       }
     }
-    site{
+    site {
       siteMetadata {
         contact
       }
@@ -26,10 +32,9 @@ export const query = graphql`
   }
 `
 
-
 const Projects = ({ data }) => {
   const projects = data.allMarkdownRemark.edges
-  const { contact } = data.site.siteMetadata;
+  const { contact } = data.site.siteMetadata
 
   return (
     <Layout>
@@ -43,13 +48,18 @@ const Projects = ({ data }) => {
               key={`${project.node.id}`}
             >
               <div>
+                <img
+                  src={project.node.frontmatter.thumb.childImageSharp.fluid.src}
+                  alt={project.node.frontmatter.title}
+                  style={{ width: 100, height: 100, borderRadius:6 }}
+                />
                 <h3>{project.node.frontmatter.title}</h3>
                 <p>{project.node.frontmatter.stack}</p>
               </div>
             </Link>
           ))}
         </div>
-        <p>Like what you see? Email me at { contact } for a quote</p>
+        <p>Like what you see? Email me at {contact} for a quote</p>
       </section>
     </Layout>
   )

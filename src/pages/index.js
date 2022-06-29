@@ -2,20 +2,21 @@ import { graphql, Link } from 'gatsby'
 import React from 'react'
 import Layout from '../components/Layout'
 import * as styles from "../styles/home.module.css"
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 export const query = graphql`
   query SiteInfo{
-    site{
-      siteMetadata{
-        title
-        description
+    file(relativePath: {eq: "gatsby-icon.png"}) {
+      childImageSharp {
+        gatsbyImageData(layout: FIXED)
       }
     }
   }
 `;
 
+
+
 const Home = ({ data }) => {
-  const { title, description } = data.site.siteMetadata;
 
   return (
     <Layout>
@@ -26,8 +27,7 @@ const Home = ({ data }) => {
           <p>UX designer & web developer based in London</p>
           <Link className={styles.btn} to="/projects">My Portfolio Projects</Link>
         </div>
-        <img src="./gatsby-icon.png" alt="site banner" style={{maxWidth:'100%'}} />
-        <p>{ title } - { description }</p>
+        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="banner image" style={{aspectRatio:1/3}} />
       </section>
     </Layout>
   )
